@@ -1,0 +1,58 @@
+# Themes
+include ./theme.conf
+
+# Allow other apps to controll kitty
+allow_remote_control yes
+listen_on unix:/tmp/kitty
+
+# FONTS
+font_family      JetBrainsMono Nerd Font
+bold_font        JetBrainsMono Nerd Font Bold
+italic_font      JetBrainsMono Nerd Font Italic
+bold_italic_font JetBrainsMono Nerd Font Bold Italic
+font_size 11.0
+
+# Padding
+window_padding_width 10 
+
+# Cursor
+cursor_shape block
+cursor_shape_unfocused hollow
+cursor_blink_interval 0
+cursor_stop_blinking_after 10
+cursor_trail 1
+
+# Url when hovering the mouse
+url_color #6792ab
+url_style curly
+detect_urls yes
+
+
+# WINDOWS
+remember_window_position yes
+window_border_width 0.5pt 
+
+# Tab bar
+tab_bar_edge bottom
+tab_bar_style powerline
+tab_powerline_style slanted
+
+################
+### KEYBINDS ###
+################
+
+# Copy/Paste
+map ctrl+shift+c copy_to_clipboard
+map ctrl+shift+v paste_from_clipboard
+
+# Tabs
+map ctrl+shift+t new_tab
+map ctrl+shift+q close_tab
+map ctrl+shift+right next_tab
+map ctrl+shift+left previous_tab
+
+# Background
+rackground_opacity 0.8
+background_blur 40 
+
+
