@@ -17,3 +17,14 @@ keymap('n', '<leader>r', ':%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>',
 
 -- Tree 
 vim.keymap.set('n', '<leader>e', '<cmd>NvimTreeToggle<CR>', { desc = 'Abrir/cerrar NvimTree' })
+
+-- Change splits
+vim.keymap.set('n', '<C-h>', '<C-w>h', { desc = 'Ir al split izquierdo' })
+vim.keymap.set('n', '<C-j>', '<C-w>j', { desc = 'Ir al split inferior' })
+vim.keymap.set('n', '<C-k>', '<C-w>k', { desc = 'Ir al split superior' })
+vim.keymap.set('n', '<C-l>', '<C-w>l', { desc = 'Ir al split derecho' })
+
+vim.keymap.set('n', '<A-h>', '<C-w>H', { desc = 'Mover split a la izquierda' })
+vim.keymap.set('n', '<A-j>', '<C-w>J', { desc = 'Mover split abajo' })
+vim.keymap.set('n', '<A-k>', '<C-w>K', { desc = 'Mover split arriba' })
+vim.keymap.set('n', '<A-l>', '<C-w>L', { desc = 'Mover split a la derecha' })
