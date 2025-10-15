@@ -14,3 +14,6 @@ keymap('n', '<leader>fw', '*', opts)
 
 -- Remplazar palabra bajo cursor con confirmación con leader + r
 keymap('n', '<leader>r', ':%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>', opts)
+
+-- Tree 
+vim.keymap.set('n', '<leader>e', '<cmd>NvimTreeToggle<CR>', { desc = 'Abrir/cerrar NvimTree' })
