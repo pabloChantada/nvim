@@ -96,6 +96,7 @@ return {
         capabilities = capabilities,
       })
 
+
       -- Habilitar LSP automáticamente
       vim.lsp.enable({ "lua_ls", "ts_ls", "pyright", "html", "cssls", "jsonls" })
 

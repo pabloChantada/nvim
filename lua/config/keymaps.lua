@@ -17,6 +17,9 @@ keymap('n', '<leader>r', ':%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>',
 
 -- Tree 
 vim.keymap.set('n', '<leader>e', '<cmd>NvimTreeToggle<CR>', { desc = 'Abrir/cerrar NvimTree' })
+-- SHIFT + H -> Hidden files
+-- SHIFT + I -> Hidden .gitignore
+
 
 -- Change splits
 vim.keymap.set('n', '<C-h>', '<C-w>h', { desc = 'Ir al split izquierdo' })

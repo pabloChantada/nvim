@@ -3,20 +3,21 @@ return {
   build = ":TSUpdate",
   config = function()
     require("nvim-treesitter.configs").setup({
-      -- Languages needed
-      ensure_installed = {
-        "lua",
-        "vim",
-        "vimdoc",
-        "javascript",
-        "typescript",
-        "python",
-	"java",
-        "html",
-        "css",
-        "json",
-        "markdown",
-      },
+        ensure_installed = {
+          "lua",
+          "vim",
+          "vimdoc",
+          "javascript",
+          "typescript",
+          "python",
+          "java",
+          "html",
+          "css",
+          "json",
+          "markdown",
+          "rust",      -- Añadir esto
+          "toml",      -- Añadir esto para Cargo.toml
+        },
       
       -- Install only
       sync_install = false,
@@ -39,6 +40,6 @@ return {
   {
     "nvim-treesitter/nvim-treesitter-context",
     dependencies = "nvim-treesitter/nvim-treesitter",
-    config = true,
+    confin = true,
   },
 }
