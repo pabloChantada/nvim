@@ -17,6 +17,7 @@ return {
           "lua_ls",
           "ts_ls",
           "pyright",
+          "ruff",
           "html",
           "cssls",
           "jsonls",
@@ -101,22 +102,58 @@ return {
       vim.lsp.enable({ "lua_ls", "ts_ls", "pyright", "html", "cssls", "jsonls" })
 
       -- Keymaps para LSP
-      vim.api.nvim_create_autocmd("LspAttach", {
-        group = vim.api.nvim_create_augroup("UserLspConfig", {}),
-        callback = function(ev)
-          local opts = { buffer = ev.buf }
-          vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-          vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-          vim.keymap.set("n", "<leader>vws", vim.lsp.buf.workspace_symbol, opts)
-          vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, opts)
-          vim.keymap.set("n", "[d", vim.diagnostic.goto_next, opts)
-          vim.keymap.set("n", "]d", vim.diagnostic.goto_prev, opts)
-          vim.keymap.set("n", "<leader>vca", vim.lsp.buf.code_action, opts)
-          vim.keymap.set("n", "<leader>vrr", vim.lsp.buf.references, opts)
-          vim.keymap.set("n", "<leader>vrn", vim.lsp.buf.rename, opts)
-          vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
-        end,
-      })
+          
+        vim.api.nvim_create_autocmd("LspAttach", {
+          group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+          callback = function(ev)
+            local bufnr = ev.buf
+            local client = vim.lsp.get_client_by_id(ev.data.client_id)
+            local opts = { buffer = bufnr, silent = true }
+
+            -- Keymaps universales
+            vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+            vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+            vim.keymap.set("n", "<leader>vws", vim.diagnostic.open_float, opts) -- Cambiado a vws
+            vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, opts)  -- Mantenido
+            vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
+            vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
+            vim.keymap.set("n", "<leader>vca", vim.lsp.buf.code_action, opts)
+            vim.keymap.set("n", "<leader>vrr", vim.lsp.buf.references, opts)
+            vim.keymap.set("n", "<leader>vrn", vim.lsp.buf.rename, opts)
+            vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
+            
+            vim.keymap.set("n", "<leader>oi", function()
+                  vim.lsp.buf.code_action({
+                    context = { only = { "source.organizeImports" } },
+                    apply = true,
+                  })
+                end, vim.tbl_extend("force", opts, { desc = "Organize Imports" }))
+
+            -- === Keymaps específicos de Rust (solo si es rustaceanvim) ===
+            if client.name == "rust_analyzer" then
+              vim.keymap.set("n", "<leader>ca", function()
+                vim.cmd.RustLsp('codeAction')
+              end, opts)
+              vim.keymap.set("n", "<leader>dr", function()
+                vim.cmd.RustLsp('debuggables')
+              end, opts)
+              vim.keymap.set("n", "<leader>rr", function()
+                vim.cmd.RustLsp('runnables')
+              end, opts)
+            end
+
+            -- === Keymaps específicos de Python (opcional) ===
+            if client.name == "pyright" or client.name == "ruff" then
+              vim.keymap.set("n", "<leader>oi", function()
+                vim.lsp.buf.code_action({
+                  context = { only = { "source.organizeImports" } },
+                  apply = true,
+                })
+              end, opts)
+            end
+          end,
+        })
+
     end,
   },
 }

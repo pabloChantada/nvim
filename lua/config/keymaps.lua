@@ -16,7 +16,8 @@ keymap('n', '<leader>fw', '*', opts)
 keymap('n', '<leader>r', ':%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>', opts)
 
 -- Tree 
-vim.keymap.set('n', '<leader>e', '<cmd>NvimTreeToggle<CR>', { desc = 'Abrir/cerrar NvimTree' })
+vim.keymap.set('n', '<leader>e', '<cmd>NvimTreeToggle<CR>', { desc = 'Abrir/Cerrar NvimTree' })
+vim.keymap.set('n', '<leader>ç', '<cmd>:Telescope keymaps<CR>', { desc = 'Abrir/Cerrar Keymaps'})
 -- SHIFT + H -> Hidden files
 -- SHIFT + I -> Hidden .gitignore
 

@@ -13,19 +13,19 @@ return {
       vim.g.rustaceanvim = {
         -- LSP configuration
         server = {
-          on_attach = function(client, bufnr)
-            -- Keymaps específicos de Rust
-            local opts = { buffer = bufnr }
-            vim.keymap.set("n", "<leader>ca", function()
-              vim.cmd.RustLsp('codeAction')
-            end, opts)
-            vim.keymap.set("n", "<leader>dr", function()
-              vim.cmd.RustLsp('debuggables')
-            end, opts)
-            vim.keymap.set("n", "<leader>rr", function()
-              vim.cmd.RustLsp('runnables')
-            end, opts)
-          end,
+          -- on_attach = function(client, bufnr)
+          --   -- Keymaps específicos de Rust
+          --   local opts = { buffer = bufnr }
+          --   vim.keymap.set("n", "<leader>ca", function()
+          --     vim.cmd.RustLsp('codeAction')
+          --   end, opts)
+          --   vim.keymap.set("n", "<leader>dr", function()
+          --     vim.cmd.RustLsp('debuggables')
+          --   end, opts)
+          --   vim.keymap.set("n", "<leader>rr", function()
+          --     vim.cmd.RustLsp('runnables')
+          --   end, opts)
+          -- end,
           default_settings = {
             ['rust-analyzer'] = {
               cargo = {
