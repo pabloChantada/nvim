@@ -35,10 +35,11 @@ return {
                   enable = true,
                 },
               },
-              checkOnSave = {
+              check = {
                 command = "clippy",
                 allFeatures = true,
               },
+              checkOnSave = true,
               procMacro = {
                 enable = true,
                 ignored = {
