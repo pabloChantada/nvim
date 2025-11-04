@@ -85,6 +85,7 @@ return {
 
       sources = cmp.config.sources({
         { name = "nvim_lsp", priority = 1000 },
+        { name = "copilot" , priority = 800 },
         { name = "luasnip", priority = 750 },
         { name = "crates", priority = 800 },  -- Para Rust
       }, {
