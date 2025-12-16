@@ -16,19 +16,19 @@ keymap('n', '<leader>fw', '*', opts)
 keymap('n', '<leader>r', ':%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>', opts)
 
 -- Tree 
-vim.keymap.set('n', '<leader>e', '<cmd>NvimTreeToggle<CR>', { desc = 'Abrir/Cerrar NvimTree' })
-vim.keymap.set('n', '<leader>ç', '<cmd>:Telescope keymaps<CR>', { desc = 'Abrir/Cerrar Keymaps'})
+keymap('n', '<leader>e', '<cmd>NvimTreeToggle<CR>', opts)
+keymap('n', '<leader>ç', '<cmd>:Telescope keymaps<CR>', opts)
 -- SHIFT + H -> Hidden files
 -- SHIFT + I -> Hidden .gitignore
 
 
 -- Change splits
-vim.keymap.set('n', '<C-h>', '<C-w>h', { desc = 'Ir al split izquierdo' })
-vim.keymap.set('n', '<C-j>', '<C-w>j', { desc = 'Ir al split inferior' })
-vim.keymap.set('n', '<C-k>', '<C-w>k', { desc = 'Ir al split superior' })
-vim.keymap.set('n', '<C-l>', '<C-w>l', { desc = 'Ir al split derecho' })
+keymap('n', '<C-h>', '<C-w>h', opts)
+keymap('n', '<C-j>', '<C-w>j', opts)
+keymap('n', '<C-k>', '<C-w>k', opts)
+keymap('n', '<C-l>', '<C-w>l', opts)
 
-vim.keymap.set('n', '<A-h>', '<C-w>H', { desc = 'Mover split a la izquierda' })
-vim.keymap.set('n', '<A-j>', '<C-w>J', { desc = 'Mover split abajo' })
-vim.keymap.set('n', '<A-k>', '<C-w>K', { desc = 'Mover split arriba' })
-vim.keymap.set('n', '<A-l>', '<C-w>L', { desc = 'Mover split a la derecha' })
+keymap('n', '<A-h>', '<C-w>H', opts)
+keymap('n', '<A-j>', '<C-w>J', opts)
+keymap('n', '<A-k>', '<C-w>K', opts)
+keymap('n', '<A-l>', '<C-w>L', opts)

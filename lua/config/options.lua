@@ -6,14 +6,14 @@ local uname = vim.loop.os_uname().sysname
 
 if uname == "Linux" then
     vim.g.clipboard = {
-      name = 'wl-clipboard',
+      name = 'xclip',
       copy = {
-        ['+'] = 'wl-copy',
-        ['*'] = 'wl-copy',
+        ['+'] = 'xclip -selection clipboard',
+        ['*'] = 'xclip -selection primary',
       },
       paste = {
-        ['+'] = 'wl-paste',
-        ['*'] = 'wl-paste',
+        ['+'] = 'xclip -selection clipboard -o',
+        ['*'] = 'xclip -selection primary -o',
       },
       cache_enabled = 0,
     }
