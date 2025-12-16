@@ -39,5 +39,5 @@ vim.cmd([[
 vim.opt.scrolloff = 8 -- Never less than 8 char under the line
 
 -- TREE WIEVER
--- vim.g.loaded_netrw = 1
--- vim.g.loaded_netrwPlugin = 1
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1

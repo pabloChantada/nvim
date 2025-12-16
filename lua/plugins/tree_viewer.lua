@@ -14,11 +14,13 @@ return {
       end
       -- Mapeos por defecto
       api.config.mappings.default_on_attach(bufnr)
+      
       -- Tus mapeos personalizados
-      vim.keymap.set('n', '<C-t>', api.tree.change_root_to_parent, opts('Subir un nivel'))
       vim.keymap.set('n', '?', api.tree.toggle_help, opts('Ayuda'))
-    end
-    -- Configuración del plugin
+      -- vim.keymap.set('n', '<CR>', api.node.open.edit, opts('Abrir'))
+      vim.keymap.set('n', 'o', api.node.open.edit, opts('Abrir'))
+      -- vim.keymap.set('n', 'l', api.node.open.edit, opts('Abrir'))
+    end    -- Configuración del plugin
     require("nvim-tree").setup {
       on_attach = my_on_attach,
       filters = {

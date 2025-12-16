@@ -17,7 +17,6 @@ return {
           "lua_ls",
           "ts_ls",
           "pyright",
-          "ruff",
           "html",
           "cssls",
           "jsonls",
@@ -100,7 +99,7 @@ return {
 
 
       -- Habilitar LSP automáticamente
-      vim.lsp.enable({ "lua_ls", "ts_ls", "pyright", "html", "cssls", "jsonls" })
+      -- vim.lsp.enable({ "lua_ls", "ts_ls", "pyright", "html", "cssls", "jsonls" })
 
       -- Keymaps para LSP
           
