@@ -40,6 +40,6 @@ return {
   {
     "nvim-treesitter/nvim-treesitter-context",
     dependencies = "nvim-treesitter/nvim-treesitter",
-    confin = true,
+    config = true,
   },
 }
