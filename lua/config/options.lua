@@ -1,4 +1,5 @@
 -- Clipboard
+
 vim.opt.clipboard = "unnamedplus"
 
 local uname = vim.loop.os_uname().sysname

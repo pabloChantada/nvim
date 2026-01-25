@@ -1,6 +1,7 @@
 -- NUMBER LINES
 vim.opt.nu = true
 vim.opt.relativenumber = true
+vim.opt.splitright = true
 
 -- TABS
 vim.opt.tabstop = 4 -- Spaces in tabs
@@ -33,7 +34,6 @@ vim.cmd([[
   hi StatusLine guibg=NONE ctermbg=NONE
   hi StatusLineNC guibg=NONE ctermbg=NONE
 ]])
-
 
 -- SCROLL
 vim.opt.scrolloff = 8 -- Never less than 8 char under the line
