@@ -1,20 +1,43 @@
--- Copilot
 return {
-  "CopilotC-Nvim/CopilotChat.nvim",
-  branch = "canary",  -- For latest features
-  dependencies = {
-    { "zbirenbaum/copilot.lua" },  -- Base Copilot (or github/copilot.vim)
-    { "nvim-lua/plenary.nvim" },
-    { "nvim-telescope/telescope.nvim" },  -- Optional for actions
+  -- Copilot BASE (requerido para Chat)
+  {
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
+    build = ":Copilot auth",
+    opts = {
+      suggestion = { enabled = true },
+      panel = { enabled = false },
+      filetypes = {
+        markdown = true,
+        help = true,
+        ["*"] = true,
+      },
+    },
   },
-  opts = {
-    window = { layout = "float" },  -- Or "vsplit"
-    auto_follow_cursor = false,
-  },
-  keys = {
-    { "<leader>cc", ":CopilotChatToggle<CR>", desc = "Toggle Copilot Chat" },
-    { "<leader>cce", ":CopilotChatExplain<CR>", desc = "Explain code" },
-    { "<leader>ccf", ":CopilotChatFix<CR>", desc = "Fix code" },
+
+  -- CopilotChat
+  {
+    "CopilotC-Nvim/CopilotChat.nvim",
+    branch = "main",
+    dependencies = {
+      "zbirenbaum/copilot.lua",
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim",
+    },
+    opts = {
+      window = { layout = "float" },
+      auto_follow_cursor = false,
+      show_help = true,
+    },
+    keys = {
+      { "<leader>co", ":CopilotChatToggle<CR>", desc = "Toggle Copilot Chat" },
+      { "<leader>coe", ":CopilotChatExplain<CR>", desc = "Explain code" },
+      { "<leader>cof", ":CopilotChatFix<CR>", desc = "Fix code" },
+      { "<leader>cor", ":CopilotChatReview<CR>", desc = "Review code" },
+      { "<leader>cot", ":CopilotChatTests<CR>", desc = "Generate tests" },
+      { "<leader>com", ":CopilotChatCommit<CR>", desc = "Commit message" },
+    },
   },
 }
 
