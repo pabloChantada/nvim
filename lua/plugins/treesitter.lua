@@ -1,5 +1,8 @@
 return {
   "nvim-treesitter/nvim-treesitter",
+  -- The "main" branch (new default) no longer has nvim-treesitter.configs;
+  -- this config uses the classic API, which lives on "master".
+  branch = "master",
   build = ":TSUpdate",
   config = function()
     require("nvim-treesitter.configs").setup({
@@ -15,8 +18,8 @@ return {
           "css",
           "json",
           "markdown",
-          "rust",      -- Añadir esto
-          "toml",      -- Añadir esto para Cargo.toml
+          "rust",      -- Added
+          "toml",      -- For Cargo.toml
         },
       
       -- Install only

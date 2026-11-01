@@ -1,11 +1,11 @@
 return {
   "mbbill/undotree",
   config = function()
-    -- Keymap para abrir undotree
+    -- Keymap to open undotree
     vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
     
-    -- Configuración opcional
-    vim.g.undotree_WindowLayout = 2  -- Layout del panel
-    vim.g.undotree_SetFocusWhenToggle = 1  -- Hacer foco al abrir
+    -- Optional settings
+    vim.g.undotree_WindowLayout = 2  -- Panel layout
+    vim.g.undotree_SetFocusWhenToggle = 1  -- Focus when opened
   end,
 }

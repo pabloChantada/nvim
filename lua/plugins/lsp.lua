@@ -1,5 +1,5 @@
 return {
-  -- Mason: gestor de LSP servers
+  -- Mason: LSP server manager
   {
     "williamboman/mason.nvim",
     config = function()
@@ -7,7 +7,7 @@ return {
     end,
   },
 
-  -- Mason-lspconfig: puente entre mason y lspconfig
+  -- Mason-lspconfig: bridge between mason and lspconfig
   {
     "williamboman/mason-lspconfig.nvim",
     dependencies = { "williamboman/mason.nvim" },
@@ -27,7 +27,7 @@ return {
     end,
   },
 
-  -- Configuración LSP con API nativa de Neovim
+  -- LSP config using Neovim's native API
   {
     "neovim/nvim-lspconfig",
     dependencies = {
@@ -38,7 +38,7 @@ return {
     config = function()
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-      -- Configurar Lua LS
+      -- Configure Lua LS
       vim.lsp.config("lua_ls", {
         cmd = { "lua-language-server" },
         filetypes = { "lua" },
@@ -57,7 +57,7 @@ return {
         },
       })
 
-      -- Configurar TypeScript/JavaScript
+      -- Configure TypeScript/JavaScript
       vim.lsp.config("ts_ls", {
         cmd = { "typescript-language-server", "--stdio" },
         filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
@@ -65,7 +65,7 @@ return {
         capabilities = capabilities,
       })
 
-      -- Configurar Python
+      -- Configure Python
       vim.lsp.config("pyright", {
         cmd = { "pyright-langserver", "--stdio" },
         filetypes = { "python" },
@@ -73,7 +73,7 @@ return {
         capabilities = capabilities,
       })
 
-      -- Configurar HTML
+      -- Configure HTML
       vim.lsp.config("html", {
         cmd = { "vscode-html-language-server", "--stdio" },
         filetypes = { "html" },
@@ -81,7 +81,7 @@ return {
         capabilities = capabilities,
       })
 
-      -- Configurar CSS
+      -- Configure CSS
       vim.lsp.config("cssls", {
         cmd = { "vscode-css-language-server", "--stdio" },
         filetypes = { "css", "scss", "less" },
@@ -89,7 +89,7 @@ return {
         capabilities = capabilities,
       })
 
-      -- Configurar JSON
+      -- Configure JSON
       vim.lsp.config("jsonls", {
         cmd = { "vscode-json-language-server", "--stdio" },
         filetypes = { "json", "jsonc" },
@@ -98,10 +98,10 @@ return {
       })
 
 
-      -- Habilitar LSP automáticamente
+      -- Enable LSP automatically
       -- vim.lsp.enable({ "lua_ls", "ts_ls", "pyright", "html", "cssls", "jsonls" })
 
-      -- Keymaps para LSP
+      -- LSP keymaps
           
         vim.api.nvim_create_autocmd("LspAttach", {
           group = vim.api.nvim_create_augroup("UserLspConfig", {}),
@@ -110,11 +110,11 @@ return {
             local client = vim.lsp.get_client_by_id(ev.data.client_id)
             local opts = { buffer = bufnr, silent = true }
 
-            -- Keymaps universales
+            -- Universal keymaps
             vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
             vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-            vim.keymap.set("n", "<leader>vws", vim.diagnostic.open_float, opts) -- Cambiado a vws
-            vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, opts)  -- Mantenido
+            vim.keymap.set("n", "<leader>vws", vim.diagnostic.open_float, opts) -- Changed to vws
+            vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, opts)  -- Kept
             vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
             vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
             vim.keymap.set("n", "<leader>vca", vim.lsp.buf.code_action, opts)
@@ -129,7 +129,7 @@ return {
                   })
                 end, vim.tbl_extend("force", opts, { desc = "Organize Imports" }))
 
-            -- === Keymaps específicos de Rust (solo si es rustaceanvim) ===
+            -- === Rust-specific keymaps (only with rustaceanvim) ===
             if client.name == "rust_analyzer" then
               vim.keymap.set("n", "<leader>ca", function()
                 vim.cmd.RustLsp('codeAction')
@@ -142,7 +142,7 @@ return {
               end, opts)
             end
 
-            -- === Keymaps específicos de Python (opcional) ===
+            -- === Python-specific keymaps (optional) ===
             if client.name == "pyright" or client.name == "ruff" then
               vim.keymap.set("n", "<leader>oi", function()
                 vim.lsp.buf.code_action({

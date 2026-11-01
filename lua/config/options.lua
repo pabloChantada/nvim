@@ -5,7 +5,22 @@ vim.opt.clipboard = "unnamedplus"
 local uname = vim.loop.os_uname().sysname
 local is_wayland = os.getenv("WAYLAND_DISPLAY") ~= nil
 
-if uname == "Linux" then
+if vim.fn.has("wsl") == 1 then
+  -- WSL: use the Windows clipboard (WSLg sets WAYLAND_DISPLAY,
+  -- but wl-clipboard doesn't sync well with Windows)
+  vim.g.clipboard = {
+    name = "WslClipboard",
+    copy = {
+      ["+"] = "clip.exe",
+      ["*"] = "clip.exe",
+    },
+    paste = {
+      ["+"] = 'powershell.exe -NoLogo -NoProfile -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+      ["*"] = 'powershell.exe -NoLogo -NoProfile -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+    },
+    cache_enabled = 0,
+  }
+elseif uname == "Linux" then
   if is_wayland then
     -- Wayland (Ubuntu default)
     vim.g.clipboard = {

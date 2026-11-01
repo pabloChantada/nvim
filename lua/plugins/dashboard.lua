@@ -35,11 +35,11 @@ return {
         },
 
         shortcut = {
-          -- Iconos más grandes/vistosos de Nerd Font JetBrains Mono (o similares)
-          { icon = "  ", desc = "Find File", group = "Label", key = "f", action = "Telescope find_files" },  -- lupa más grande
-          { icon = "  " , desc = "Open Lazy", group = "Label", key = "u", action = "Lazy" },      -- actualización
-          { icon = "  ", desc = "New File", group = "Label", key = "n", action = "enew" },                 -- nuevo archivo
-          { icon = "  ", desc = "Config", group = "Label", key = "c", action = "edit ~/.config/nvim/init.lua" }, -- configuración
+          -- Larger Nerd Font icons (JetBrains Mono or similar)
+          { icon = "  ", desc = "Find File", group = "Label", key = "f", action = "Telescope find_files" },  -- magnifying glass
+          { icon = "  " , desc = "Open Lazy", group = "Label", key = "u", action = "Lazy" },      -- update
+          { icon = "  ", desc = "New File", group = "Label", key = "n", action = "enew" },                 -- new file
+          { icon = "  ", desc = "Config", group = "Label", key = "c", action = "edit ~/.config/nvim/init.lua" }, -- config
           { icon = "  ", desc = "Git Status", group = "Label", key = "g", action = "Telescope git_status" }, -- git
         },
 
@@ -54,7 +54,7 @@ return {
       },
     }
 
-    -- Colores Kanagawa
+    -- Kanagawa colors
     vim.cmd [[
       highlight DashboardHeader guifg=#c34043
       highlight DashboardFooter guifg=#c2a95f

@@ -1,84 +1,85 @@
-## Requisitos Previos
+## Prerequisites
 
-* **Neovim >= 0.10.0**: Obligatorio para el funcionamiento de `nvim-treesitter-context` y caracteristicas modernas de LSP.
-* **Nerd Font**: Se requiere una fuente parcheada (ej. JetBrainsMono Nerd Font) para visualizar los iconos.
-* **Terminal**: Configurado para Ghostty (recomendado) o Kitty.
+* **Neovim >= 0.10.0**: Required by `nvim-treesitter-context` and modern LSP features.
+* **Nerd Font**: A patched font (e.g. JetBrainsMono Nerd Font) is required to display icons.
+* **Terminal**: Ghostty or Kitty on Linux; WezTerm on Windows + WSL2 (see [dotfiles](https://github.com/pabloChantada/dotfiles)).
 
-## Instalacion
+## Installation
 
-1. Respalda tu configuracion actual (opcional):
+1. Back up your current config (optional):
 ```bash
 mv ~/.config/nvim ~/.config/nvim.bak
 ```
 
-2. Clona este repositorio:
+2. Clone this repository:
 ```bash
-git clone [URL_DE_TU_REPO] ~/.config/nvim
+git clone [YOUR_REPO_URL] ~/.config/nvim
 ```
 
-3. Instala las dependencias del sistema (ver seccion abajo).
+3. Install the system dependencies (see section below).
 
-4. Inicia Neovim:
+4. Start Neovim:
 ```bash
 nvim
 ```
 
 
-El gestor de plugins `lazy.nvim` se iniciara automaticamente. Espera a que termine la instalacion y reinicia el editor.
+The `lazy.nvim` plugin manager will bootstrap automatically. Wait for the installation to finish and restart the editor.
 
-## Dependencias del Sistema (Ubuntu/Debian)
+## System Dependencies (Ubuntu/Debian)
 
-Para que el portapapeles, las busquedas y los servidores de lenguaje funcionen correctamente, es necesario instalar las siguientes herramientas:
+For the clipboard, search and language servers to work properly, install the following tools:
 ```bash
-# Actualizar repositorios
+# Update package lists
 sudo apt update
 
-# Herramientas base y compiladores (para Treesitter)
+# Base tools and compilers (for Treesitter)
 sudo apt install build-essential
 
-# Buscadores para Telescope
+# Search tools for Telescope
 sudo apt install ripgrep fd-find
 
-# Soporte de Portapapeles (Instalar segun tu sistema grafico)
-# Para Wayland (Ubuntu 22.04+ por defecto):
+# Clipboard support (install according to your display server)
+# On WSL nothing is needed: clip.exe / PowerShell are used automatically
+# For Wayland (Ubuntu 22.04+ default):
 sudo apt install wl-clipboard
-# Para X11 (Sistemas antiguos):
+# For X11 (older systems):
 sudo apt install xclip
 
-# Entorno para Mason (Instalacion de LSPs de JS/TS/HTML/CSS)
+# Runtime for Mason (installs JS/TS/HTML/CSS LSPs)
 sudo apt install nodejs npm
 
-# Entorno Python (Para LSPs y herramientas virtuales)
+# Python environment (for LSPs and virtual env tools)
 sudo apt install python3-venv pipx
 pipx ensurepath
 ```
 
-## Servidores de Lenguaje (LSP)
+## Language Servers (LSP)
 
-Los servidores se gestionan mediante `Mason`. Puedes ver el estado escribiendo `:Mason` dentro de Neovim.
+Servers are managed with `Mason`. You can check their status by running `:Mason` inside Neovim.
 
-* **Python**: `pyright`, `ruff` (linter/formateador). Requiere configurar el entorno virtual.
-* **Rust**: `rust-analyzer` (gestionado via plugin `rustaceanvim`).
+* **Python**: `pyright`, `ruff` (linter/formatter). Requires a configured virtual environment.
+* **Rust**: `rust-analyzer` (managed via the `rustaceanvim` plugin).
 * **Web**: `html`, `cssls`, `ts_ls`, `jsonls`.
 * **Lua**: `lua_ls`.
 
-## Configuracion de Terminal (Ghostty)
+## Terminal Setup (Ghostty)
 
-Para mantener la consistencia visual y la transparencia, utiliza la siguiente configuracion en `~/.config/ghostty/config`.
+For visual consistency and transparency, use the following config in `~/.config/ghostty/config`.
 
 ```ini
-# --- Fuente ---
+# --- Font ---
 font-family = "Hack Nerd Font"
 font-size = 11
 
-# --- Tema Kanagawa Dragon ---
+# --- Kanagawa Dragon theme ---
 background = #181820
 foreground = #c5c9c5
 cursor-color = #c8c093
 selection-background = #2d4f67
 selection-foreground = #c8c093
 
-# Paleta de colores ANSI
+# ANSI color palette
 palette = 0=#0d0c0c
 palette = 1=#c4746e
 palette = 2=#8a9a7b
@@ -96,43 +97,43 @@ palette = 13=#938AA9
 palette = 14=#7AA89F
 palette = 15=#c5c9c5
 
-# --- Integracion ---
-# Transparencia (Coincide con la config de Neovim)
+# --- Integration ---
+# Transparency (matches the Neovim config)
 background-opacity = 0.9
 background-blur-radius = 20
 
-# Ajustes de ventana
+# Window settings
 window-decoration = true
 window-padding-x = 4
 window-padding-y = 4
 confirm-close-surface = false
 
-# Variable de entorno para detectar colores correctamente
+# Environment variable so colors are detected correctly
 env = TERM=xterm-ghostty
 ```
 
-## Atajos de Teclado Principales
+## Main Keymaps
 
-La tecla lider es `<Espacio>`.
+The leader key is `<Space>`.
 
-### Archivos y Navegacion
+### Files and Navigation
 
-* `<Espacio>pv`: Abrir explorador de archivos nativo (Netrw).
-* `<Espacio>e`: Abrir/Cerrar arbol de archivos (NvimTree).
-* `<Espacio>ff`: Buscar archivos por nombre (Telescope).
-* `<Espacio>ps`: Buscar texto dentro de archivos (Grep).
-* `<Espacio>u`: Historial de deshacer (Undotree).
+* `<Space>pv`: Open the native file explorer (Netrw).
+* `<Space>e`: Toggle the file tree (NvimTree).
+* `<Space>ff`: Find files by name (Telescope).
+* `<Space>ps`: Search text inside files (Grep).
+* `<Space>u`: Undo history (Undotree).
 
 ### Git
-* `<Espacio>gg`: Abrir LazyGit (interfaz flotante).
+* `<Space>gg`: Open LazyGit (floating window).
 
-### Harpoon (Navegacion Rapida)
+### Harpoon (Quick Navigation)
 
-* `<Espacio>a`: Añadir archivo a la lista.
-* `<Ctrl>e`: Menu rapido de archivos.
-* `<Ctrl>1-4`: Navegar a los archivos marcados.
+* `<Space>a`: Add file to the list.
+* `<Ctrl>e`: Quick file menu.
+* `<Ctrl>1-4`: Jump to marked files.
 
-### Edicion
+### Editing
 
-* `<Espacio>r`: Reemplazar la palabra bajo el cursor en todo el archivo.
-* `<Espacio>f`: Formatear buffer actual.
+* `<Space>r`: Replace the word under the cursor across the whole file.
+* `<Space>f`: Format the current buffer.

@@ -11,6 +11,7 @@ vim.opt.expandtab = true
 
 -- UNDO HISTORY
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+vim.fn.mkdir(vim.opt.undodir:get()[1], "p")
 vim.opt.undofile = true
 
 -- SEARCHES
@@ -20,10 +21,10 @@ vim.opt.incsearch = true -- Incremental search for complex terms
 -- COLORS
 vim.opt.termguicolors = true
 
--- Cargar el esquema y luego aplica transparencia
+-- Load the colorscheme, then apply transparency
 vim.cmd([[colorscheme kanagawa]])
 
--- Activar transparencia
+-- Enable transparency
 vim.cmd([[
   hi Normal guibg=NONE ctermbg=NONE
   hi NormalNC guibg=NONE ctermbg=NONE
@@ -38,6 +39,6 @@ vim.cmd([[
 -- SCROLL
 vim.opt.scrolloff = 8 -- Never less than 8 char under the line
 
--- TREE WIEVER
+-- TREE VIEWER
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1

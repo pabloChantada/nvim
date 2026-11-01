@@ -9,11 +9,11 @@ return {
 				enabled = true,
 				auto_trigger = true,
 				keymap = {
-					accept = "<C-l>", -- aceptar sugerencia
-					-- accept = "<Tab>", -- aceptar sugerencia
-					next = "<M-]>", -- siguiente sugerencia
-					prev = "<M-[>", -- sugerencia anterior
-					dismiss = "<C-]>", -- descartar sugerencia
+					accept = "<C-l>", -- accept suggestion
+					-- accept = "<Tab>", -- accept suggestion
+					next = "<M-]>", -- next suggestion
+					prev = "<M-[>", -- previous suggestion
+					dismiss = "<C-]>", -- dismiss suggestion
 				},
 			},
 			panel = { enabled = true },

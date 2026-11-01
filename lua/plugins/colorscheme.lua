@@ -48,11 +48,11 @@ return {
       },
     })
     
-    -- Aplicar el colorscheme
+    -- Apply the colorscheme
     vim.cmd("colorscheme kanagawa")
 
 
-    -- Sincronizar con Kitty
+    -- Sync with Kitty
   --   vim.api.nvim_create_autocmd("ColorScheme", {
   --     pattern = "kanagawa",
   --     callback = function()
