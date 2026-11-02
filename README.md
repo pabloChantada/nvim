@@ -114,26 +114,54 @@ env = TERM=xterm-ghostty
 
 ## Main Keymaps
 
-The leader key is `<Space>`.
+The leader key is `<Space>`. Press it and wait to see every shortcut in the which-key popup, or use `<Space>ç` to search them with Telescope.
 
 ### Files and Navigation
 
 * `<Space>pv`: Open the native file explorer (Netrw).
 * `<Space>e`: Toggle the file tree (NvimTree).
 * `<Space>ff`: Find files by name (Telescope).
+* `<Space>fg`: Find files tracked by git.
+* `<Space>fw`: Find the word under the cursor.
 * `<Space>ps`: Search text inside files (Grep).
 * `<Space>u`: Undo history (Undotree).
+* `<Space>bc`: Close the current buffer.
+
+### Windows
+
+* `<Ctrl>h/j/k/l`: Move between splits.
+* `<Space>wh/wj/wk/wl`: Move the current split left/down/up/right.
+* `<Ctrl>Arrows`: Resize the current split.
 
 ### Git
 * `<Space>gg`: Open LazyGit (floating window).
+* `<Space>gf` / `<Space>gl`: LazyGit filtered by repo / current file.
 
 ### Harpoon (Quick Navigation)
 
 * `<Space>a`: Add file to the list.
 * `<Ctrl>e`: Quick file menu.
 * `<Ctrl>1-4`: Jump to marked files.
+* `<Space>hp` / `<Space>hn`: Previous / next marked file.
+
+### LSP
+
+* `gd`: Go to definition.
+* `K`: Hover docs.
+* `[d` / `]d`: Previous / next diagnostic.
+* `<Space>vd`: Show line diagnostics.
+* `<Space>vca`: Code action.
+* `<Space>vrr`: References.
+* `<Space>vrn`: Rename symbol.
+* `<Space>oi`: Organize imports.
 
 ### Editing
 
 * `<Space>r`: Replace the word under the cursor across the whole file.
-* `<Space>f`: Format the current buffer.
+* Formatting runs automatically on save (conform.nvim).
+
+### Copilot
+
+* `<Ctrl>l` / `<Ctrl>]`: Accept / dismiss suggestion.
+* `<Space>zo`: Toggle Copilot Chat.
+* `<Space>ze` / `zf` / `zr` / `zt` / `zm`: Explain / fix / review / tests / commit message.

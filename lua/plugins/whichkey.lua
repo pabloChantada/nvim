@@ -5,17 +5,19 @@ return {
 		local wk = require("which-key")
 		wk.setup({})
 
+		-- Only group labels here; the mappings themselves (with desc) live
+		-- in config/keymaps.lua and in each plugin file.
 		wk.add({
 			{ "<leader>b", group = "Buffers" },
 			{ "<leader>f", group = "Find" },
 			{ "<leader>g", group = "Git" },
-			{ "<leader>l", group = "LSP" },
+			{ "<leader>h", group = "Harpoon" },
+			{ "<leader>o", group = "Organize" },
+			{ "<leader>p", group = "Project" },
+			{ "<leader>v", group = "LSP" },
+			{ "<leader>vr", group = "References / Rename" },
+			{ "<leader>w", group = "Windows" },
 			{ "<leader>z", group = "Copilot" },
-
-			{ "<leader>pv", ":Ex<CR>", desc = "File explorer" },
-			{ "<leader>r", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI", desc = "Replace word under cursor" },
-			{ "<leader>e", "<cmd>NvimTreeToggle<CR>", desc = "Toggle NvimTree" },
-			{ "<leader>ç", "<cmd>:Telescope keymaps<CR>", desc = "Telescope keymaps" },
 		})
 	end,
 }

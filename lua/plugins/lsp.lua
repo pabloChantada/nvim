@@ -108,48 +108,32 @@ return {
           callback = function(ev)
             local bufnr = ev.buf
             local client = vim.lsp.get_client_by_id(ev.data.client_id)
-            local opts = { buffer = bufnr, silent = true }
+            local function map(mode, lhs, rhs, desc)
+              vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, silent = true, desc = desc })
+            end
 
             -- Universal keymaps
-            vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-            vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-            vim.keymap.set("n", "<leader>vws", vim.diagnostic.open_float, opts) -- Changed to vws
-            vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, opts)  -- Kept
-            vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
-            vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
-            vim.keymap.set("n", "<leader>vca", vim.lsp.buf.code_action, opts)
-            vim.keymap.set("n", "<leader>vrr", vim.lsp.buf.references, opts)
-            vim.keymap.set("n", "<leader>vrn", vim.lsp.buf.rename, opts)
-            vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
-            
-            vim.keymap.set("n", "<leader>oi", function()
-                  vim.lsp.buf.code_action({
-                    context = { only = { "source.organizeImports" } },
-                    apply = true,
-                  })
-                end, vim.tbl_extend("force", opts, { desc = "Organize Imports" }))
+            map("n", "gd", vim.lsp.buf.definition, "Go to definition")
+            map("n", "K", vim.lsp.buf.hover, "Hover docs")
+            map("n", "<leader>vd", vim.diagnostic.open_float, "Line diagnostics")
+            map("n", "[d", vim.diagnostic.goto_prev, "Previous diagnostic")
+            map("n", "]d", vim.diagnostic.goto_next, "Next diagnostic")
+            map("n", "<leader>vca", vim.lsp.buf.code_action, "Code action")
+            map("n", "<leader>vrr", vim.lsp.buf.references, "References")
+            map("n", "<leader>vrn", vim.lsp.buf.rename, "Rename symbol")
+            map("i", "<C-h>", vim.lsp.buf.signature_help, "Signature help")
+            map("n", "<leader>oi", function()
+              vim.lsp.buf.code_action({
+                context = { only = { "source.organizeImports" } },
+                apply = true,
+              })
+            end, "Organize imports")
 
             -- === Rust-specific keymaps (only with rustaceanvim) ===
             if client.name == "rust_analyzer" then
-              vim.keymap.set("n", "<leader>ca", function()
-                vim.cmd.RustLsp('codeAction')
-              end, opts)
-              vim.keymap.set("n", "<leader>dr", function()
-                vim.cmd.RustLsp('debuggables')
-              end, opts)
-              vim.keymap.set("n", "<leader>rr", function()
-                vim.cmd.RustLsp('runnables')
-              end, opts)
-            end
-
-            -- === Python-specific keymaps (optional) ===
-            if client.name == "pyright" or client.name == "ruff" then
-              vim.keymap.set("n", "<leader>oi", function()
-                vim.lsp.buf.code_action({
-                  context = { only = { "source.organizeImports" } },
-                  apply = true,
-                })
-              end, opts)
+              map("n", "<leader>ca", function() vim.cmd.RustLsp("codeAction") end, "Rust: code action")
+              map("n", "<leader>dr", function() vim.cmd.RustLsp("debuggables") end, "Rust: debuggables")
+              map("n", "<leader>rr", function() vim.cmd.RustLsp("runnables") end, "Rust: runnables")
             end
           end,
         })
